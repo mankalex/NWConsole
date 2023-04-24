@@ -10,6 +10,7 @@ logger.Info("Program started");
 
 try
 {
+    var db = new NWContext();
     string choice;
     do
     {
@@ -18,6 +19,21 @@ try
         Console.WriteLine("\"q\" to quit");
         choice = Console.ReadLine();
         Console.Clear();
+        logger.Info($"Option {choice} selected");
+        if (choice == "1")
+        {
+            var query = db.Categories.OrderBy(p => p.CategoryName);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{query.Count()} records returned");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            foreach (var item in query)
+            {
+                Console.WriteLine($"{item.CategoryName} - {item.Description}");
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        Console.WriteLine();
 
     } while (choice.ToLower() != "q");
 }
