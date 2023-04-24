@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace NWConsole.Model
 {
@@ -11,6 +13,7 @@ namespace NWConsole.Model
         }
 
         public int CategoryId { get; set; }
+        [Required]
         public string CategoryName { get; set; }
         public string Description { get; set; }
 
