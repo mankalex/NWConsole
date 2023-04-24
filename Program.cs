@@ -44,6 +44,7 @@ try
             category.Description = Console.ReadLine();
             ValidationContext context = new ValidationContext(category, null, null);
             List<ValidationResult> results = new List<ValidationResult>();
+
             var isValid = Validator.TryValidateObject(category, context, results, true);
             if (isValid)
             {
@@ -57,7 +58,6 @@ try
                 else
                 {
                     logger.Info("Validation passed");
-                    // TODO: save category to db
                 }
             }
             if (!isValid)
